@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr=[1,2,3,[4,5,6,[7,8,[9,10]]]];           //declaring an array
+        var tempArr=[];                                 //declaring empty array
+
+        function flatArray(arr)                         //declaring function
+        {
+            arr.forEach((ele) => {                      //loop to traverse an array elements
+                if(typeof ele=="number")                //checking if array's element type is number
+                {
+                    tempArr.push(ele);                  //if yes, then push elements to new empty array
+                }
+                else
+                {
+                    flatArray(ele);                     //else calling function with array argument
+                }
+            });
+            return tempArr;                             //return new array
+        }
+        console.log(flatArray(arr));                    //console new array
+
+    </script>
+</body>
+</html>

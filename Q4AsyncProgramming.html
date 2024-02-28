@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const url = `https://jsonplaceholder.typicode.com/posts?_limit=5`;  //declaring url to fetch data from an API
+        async function display()                                            //async function to display fetched data from an API
+        {
+            try{                                                            //try block to handle error if any in display function
+                const response = await fetch(url);                          //declaring const type response variable to fetch the url
+                const data  = await response.json();                        //converting API data into json() formate
+                console.log(data);                                          //console data of first 5 posts including all other keys
+
+                var title = [];                                             //declaring an empty array
+                data.forEach(ele => {                                       //forEach loop to traverse an array of object
+                    title.push(ele.title);                                  //pushing only title's value into the empty array named title
+                });
+                console.log(title);                                         //display the array on console
+                document.write(title);                                      //display the array no document
+            }
+            catch(err)                                                      //catching error if any, come from try block
+            {
+                console.log("Error while fetching data is: ", err);         //console the error
+            }
+            
+        }
+        display();                                                          //calling display function
+    </script>
+</body>
+</html>
